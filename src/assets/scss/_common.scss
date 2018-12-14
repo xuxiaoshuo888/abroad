@@ -1,0 +1,111 @@
+/*
+*全局公用样式*
+*/
+$form-line-base-width:350px;
+$form-line-base-width-search:200px;
+$form-line-full-width:800px;
+//行内主表单样式
+.form-inline{
+  .block{display: block;}//块级
+  .el-select{width: $form-line-base-width}//选择器
+  .el-cascader{width: $form-line-base-width}//级联选择器
+  .el-textarea{width: $form-line-full-width}//多行文本输入框
+  .select{width: $form-line-base-width;}
+  .submit{display:block;text-align: center}//提交按钮行
+}
+a.download{
+  color:#409EFF;
+  text-decoration: underline;
+}
+//图片上传样式
+.img-upload{
+  .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    &:hover{
+      border-color: #409EFF;
+    }
+    .img{
+      width: 178px;
+      height: 178px;
+      display: block;
+    }
+    .icon{
+      font-size: 28px;
+      color: #8c939d;
+      width: 178px;
+      height: 178px;
+      line-height: 178px;
+      text-align: center;
+    }
+  }
+}
+//单独搜索card
+.card-search{
+  margin: 20px auto;
+}
+//搜索表单样式
+.form-inline-search{
+  .el-input,.el-select,.el-cascader,.el-form-item__content{
+    width: $form-line-base-width-search;
+  }
+  .el-row{
+    .el-col{text-align: center}
+    .el-input{width: 100%}
+  }
+}
+//card头部搜索
+.header-search{
+  .el-card__header{
+    padding: 30px 20px 10px;
+  }
+  .btn-group{
+    margin-bottom: 10px;
+    .el-button-group{
+      margin-right: 10px;
+    }
+  }
+}
+.pagination{
+  margin-top: 10px;
+}
+fieldset{
+  width: 300px;
+  margin: 20px auto 10px;
+  text-align: center;
+  border: none;
+  border-top:1px #e6e6e6 solid;
+  legend{
+    margin-left: 20px;
+    padding: 0 10px;
+    font-size: 20px;
+    font-weight: 300;
+  }
+}
+footer.footer{
+  color: #888;
+  text-align: center;
+  padding: 20px 0;
+}
+.width40{
+  width: 40%;
+}
+.width80{
+  width: 80%;
+}
+//工作台样式
+.work{
+  width: 1200px;
+  margin: 0 auto;
+}
+.work_more{
+  font-size: 14px !important;
+  color: #409eff;
+}
+.more_div{
+  text-align: right;
+  padding: 5px 10px;
+}
