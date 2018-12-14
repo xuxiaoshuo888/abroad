@@ -227,7 +227,7 @@
             })
       },
       sonApply(res) {
-        this.handleCurrentChange(1);
+        this.getTableData1();
         this.dialogVisible = false;
         this.$message.success(res.data.errmsg);
       },
@@ -377,7 +377,7 @@
               this.$ajax.post('/projectReturn/checkIn', this.abnormal)
                   .then(res => {
                     if (res.data.errcode === '0') {
-                      this.handleCurrentChange(1);
+                      this.getTableData1();
                       this.dialogVisible = false;
                       this.$message.success('异动已提交');
                     }

@@ -160,17 +160,17 @@
         this.dialogName='审批';
       },
       sonApprove(res) {
-        this.handleCurrentChange(1);
+        this.getTableData1();
         this.dialogVisible = false;
         this.$message.success(res.data.errmsg);
       },
       sonRelease(res) {
-        this.handleCurrentChange(1);
+        this.getTableData1();
         this.dialogVisible = false;
         this.$message.success(res.data.errmsg);
       },
       sonEdit(res) {
-        this.handleCurrentChange(1);
+        this.getTableData1();
         this.dialogVisible = false;
         this.$message.success(res.data.errmsg);
       },
