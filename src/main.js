@@ -73,35 +73,35 @@ router.beforeEach((to,from,next)=>{
   }
   else{
     //模拟登陆
-    axios.post('/cas/test_login')
-      .then(res=>{
-        axios.post('/gettoken',{uuid:res.data.data.APP_UUID})
-          .then(res=>{
-            store.commit('setToken',res.data.data.token);
-            store.commit('setRole',res.data.data.currentRole.id);
-            store.commit('setRoleList',res.data.data.roles);
-            store.commit('setUser',res.data.data.user);
-            next()
-          })
-      })
+    // axios.post('/cas/test_login')
+    //   .then(res=>{
+    //     axios.post('/gettoken',{uuid:res.data.data.APP_UUID})
+    //       .then(res=>{
+    //         store.commit('setToken',res.data.data.token);
+    //         store.commit('setRole',res.data.data.currentRole.id);
+    //         store.commit('setRoleList',res.data.data.roles);
+    //         store.commit('setUser',res.data.data.user);
+    //         next()
+    //       })
+    //   })
     //生产环境登陆
-    // if(getCookie('APP_UUID')){
-    //   axios.post('/gettoken',{uuid:getCookie('APP_UUID')})
-    //     .then(res=>{
-    //       store.commit('setToken',res.data.data.token);
-    //       store.commit('setRole',res.data.data.currentRole.id);
-    //       store.commit('setRoleList',res.data.data.roles);
-    //       store.commit('setUser',res.data.data.user);
-    //       next()
-    //     })
-    // }
-    // else{
-    //   axios.post('/getLoginUrl')
-    //     .then(res=>{
-    //       sessionStorage.clear();
-    //       window.location.href=res.data.url;
-    //     })
-    // }
+    if(getCookie('APP_UUID')){
+      axios.post('/gettoken',{uuid:getCookie('APP_UUID')})
+        .then(res=>{
+          store.commit('setToken',res.data.data.token);
+          store.commit('setRole',res.data.data.currentRole.id);
+          store.commit('setRoleList',res.data.data.roles);
+          store.commit('setUser',res.data.data.user);
+          next()
+        })
+    }
+    else{
+      axios.post('/getLoginUrl')
+        .then(res=>{
+          sessionStorage.clear();
+          window.location.href=res.data.url;
+        })
+    }
   }
 });
 
