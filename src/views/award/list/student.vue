@@ -118,7 +118,8 @@
           name:'awardData',
           data:row,
         });
-        this.$router.push('/award/detail');
+        //查看申请详情时需要带上学生基本信息，
+        this.$router.push('/award/list/stdAwardDetail');
       },
       //操作按钮
       //状态切换
@@ -161,9 +162,14 @@
         this.$ajax.post('/jxjApply/checkStudent',{id:row.id})
           .then(res=>{
             if(res.data.errcode==='0'){
+              console.log(res.data.data)
               this.$store.commit('setData',{
                 name:'awardData',
                 data:row,
+              });
+              this.$store.commit('setData',{
+                name:'stdInfo1',
+                data:res.data.data,
               });
               this.$router.push('/award/apply');
             }

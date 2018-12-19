@@ -308,10 +308,14 @@
           if (valid) {
 
             // this.form.projectIds=this.multipleSelection.map(select=>select.id);
+            let arr = []
+            for(let i in this.multipleSelection){
+              arr.push(this.multipleSelection[i].id)
+              // this.form.projectIds.push(this.multipleSelection[i].id)
+            }
+            console.log(arr)
+            this.form.projectIds = arr
             console.log(this.form.projectIds)
-            // for(let i in this.multipleSelection){
-            //   this.form.projectIds.push(this.multipleSelection[i].id)
-            // }
             this.archiveFileList=[];
             for(let i=0;i<this.fileList.length;i++){
               if(this.fileList[i].response){

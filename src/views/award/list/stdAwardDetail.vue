@@ -1,7 +1,7 @@
 <template>
     <div class="project">
         <fieldset>
-            <legend>奖学金申请表</legend>
+            <legend>奖学金申请表详情</legend>
         </fieldset>
         <el-card shadow="hover">
             <header slot="header">奖学金信息</header>
@@ -191,7 +191,7 @@
 
 <script>
   export default {
-    name: "project",
+    name: "stdAwardDetail",
     data() {
       return {
         ndList:[],//奖学金年度
@@ -249,6 +249,7 @@
         return this.$store.state.role
       },
       awardData(){
+        console.log(this.$store.state.awardData)
         return this.$store.state.awardData
       },
       stdInfo1(){
@@ -256,6 +257,8 @@
       }
     },
     created(){
+      console.log(this.$store.state.awardData)
+      console.log(this.$store.state.stdInfo1)
       if(!this.awardData.id){
         this.$router.push('/award/list/student');
       }
@@ -277,28 +280,28 @@
       getList(){
         //国家列表
         this.$ajax.post('/code/findCountries')
-          .then(res=>{
-            this.countryList=res.data.data.data;
-          });
+            .then(res=>{
+              this.countryList=res.data.data.data;
+            });
         //留学方式
         this.$ajax.post('/code/findSonCode',{fatherId:'405'})
-          .then(res=>{
-            this.abroadWayList=res.data.data.data;
-          })
+            .then(res=>{
+              this.abroadWayList=res.data.data.data;
+            })
       },
       //获取信息
       getInfo(){
         this.$ajax.post('/student/getInfo')
-          .then(res=>{
-            this.studentInfo=res.data.data.data;
-            // this.apply.email = res.data.data.data.email
-            // this.apply.lxdh = res.data.data.data.lxdh
-            // this.apply.jkzk = res.data.data.data.jkzk
-          })
+            .then(res=>{
+              this.studentInfo=res.data.data.data;
+              // this.apply.email = res.data.data.data.email
+              // this.apply.lxdh = res.data.data.data.lxdh
+              // this.apply.jkzk = res.data.data.data.jkzk
+            })
         this.$ajax.post('/jxjApply/toAdd',{id:this.awardData.id})
-          .then(res=>{
-            this.awardProject=res.data.data.data.jPcProjectList;
-          })
+            .then(res=>{
+              this.awardProject=res.data.data.data.jPcProjectList;
+            })
       },
       //关联项目改变
       changeProject(val){
@@ -308,13 +311,13 @@
           }
         }
         this.$ajax.post('/projectReturn/getJlbg',{id:val})
-          .then(res=>{
-            if(res.data.errcode==='0'){
-              this.zjList=[{name: '登记总结', url: res.data.data.data.hgzj}];
-              this.apply.xxjlzj=res.data.data.data.hgzj;
-            }
-            else this.$message.error(res.data.errmsg);
-          })
+            .then(res=>{
+              if(res.data.errcode==='0'){
+                this.zjList=[{name: '登记总结', url: res.data.data.data.hgzj}];
+                this.apply.xxjlzj=res.data.data.data.hgzj;
+              }
+              else this.$message.error(res.data.errmsg);
+            })
       },
       //附件上传
       //图片
@@ -371,13 +374,13 @@
       submitForm() {
         this.apply.pcId=this.awardData.id;
         this.$ajax.post('/jxjApply/add',this.apply)
-          .then(res=>{
-            if(res.data.errcode==='0'){
-              this.$message.success('申请已提交');
-              this.$router.push('/award/list/student');
-            }
-            else this.$message.error(res.data.errmsg);
-          })
+            .then(res=>{
+              if(res.data.errcode==='0'){
+                this.$message.success('申请已提交');
+                this.$router.push('/award/list/student');
+              }
+              else this.$message.error(res.data.errmsg);
+            })
       },
     }
   }

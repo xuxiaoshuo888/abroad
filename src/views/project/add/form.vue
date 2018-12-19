@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="destory">
         <el-form :disabled="disable" inline size="medium" :model="form" ref="form" label-width="110px"
                  class="form-inline dialog-form">
             <el-form-item label="项目名称" class="block" prop="xmmc">
@@ -276,6 +276,7 @@
     },
     data() {
       return {
+        destory:true,//通过v-if   destory销毁组件
         placeList: [],//出国出境列表
         deptList: [],//单位部门列表
         fundsList: [],//经费来源
@@ -388,6 +389,11 @@
       console.log(this.form)
       this.approve.money = this.form.xxjl;
       this.daterange = [new Date(this.row.xmkssj), new Date(this.row.xmzzsj)]
+
+    },
+    mounted(){
+      //如果xxjlnew存在值，就更新给xxjl，如果不存在就直接展示xxjl
+      this.updateXxjl()
     },
     methods: {
       //获取下拉列表
@@ -562,9 +568,14 @@
         if (this.form.xxjl && this.form.xxjlnew) {
           if (this.form.xxjl == this.form.xxjlnew) {//未修改
             return false
-          } else {
+          } else {//修改过
             return true
           }
+        }
+      },
+      updateXxjl(){
+        if(this.form.xxjlnew){
+          this.form.xxjl = this.form.xxjlnew
         }
       }
     }

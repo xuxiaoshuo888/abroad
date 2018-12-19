@@ -16,6 +16,7 @@ export default new Vuex.Store({
     regName:'',//登记表名（详情/登记）
     awardData:'',//奖学金data
     awardName:'',//奖学金表名（详情/编辑）
+    stdInfo1:'',//学生奖学金附带的信息，电话，邮箱，健康状况
   },
   getters:{
     token:state=>{return state.token},
@@ -46,6 +47,10 @@ export default new Vuex.Store({
       state.user=user;
       sessionStorage['user']=JSON.stringify(user);
     },
+    setStdInfo1(state,stdInfo1){
+      state.stdInfo1 = stdInfo1;
+      sessionStorage['stdInfo1']=stdInfo1;
+    }
   },
   actions: {}
 });

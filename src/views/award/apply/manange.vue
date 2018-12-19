@@ -86,8 +86,8 @@
         <el-card shadow="hover">
             <div class="btn-group">
                 <el-button-group>
-                    <!--<el-button size="medium" type="primary" @click="batchMoney">批量修改应发金额</el-button>-->
-                    <el-button size="medium" type="primary" @click="batchMoneyReal">批量修改金额</el-button>
+                    <el-button size="medium" type="primary" @click="batchMoney">批量修改金额</el-button>
+                    <!--<el-button size="medium" type="primary" @click="batchMoneyReal">批量修改实发金额</el-button>-->
                     <el-button size="medium" type="primary" @click="batchStatus">批量发放</el-button>
                 </el-button-group>
             </div>
@@ -108,7 +108,7 @@
                 </el-table-column>
                 <el-table-column prop="lxfsname" label="留学方式" show-overflow-tooltip align="center"></el-table-column>
                 <el-table-column prop="when_created" label="学生申请时间" show-overflow-tooltip align="center"></el-table-column>
-                <el-table-column prop="yfje" label="实发金额" show-overflow-tooltip align="center"></el-table-column>
+                <el-table-column prop="ffje" label="发放金额" show-overflow-tooltip align="center"></el-table-column>
                 <el-table-column prop="status" label="发放状态" show-overflow-tooltip align="center">
                     <template slot-scope="scope">
                         {{scope.row.status==='1'?'已发放':'未发放'}}
