@@ -65,7 +65,7 @@
                     <el-input v-model="studentInfo.zzmm" disabled></el-input>
                 </el-form-item>
                 <el-form-item label="证件类型">
-                    <el-select v-model="apply.zjlx" placeholder="请选择">
+                    <el-select v-model="apply.zjlx" placeholder="请选择" style="width: 185.6px">
                         <el-option label="护照" value="护照"></el-option>
                         <el-option label="身份证" value="身份证"></el-option>
                         <el-option label="台胞证" value="台胞证"></el-option>

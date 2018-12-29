@@ -4,7 +4,7 @@
             <legend>我的工作台</legend>
         </fieldset>
         <el-card shadow="hover">
-            <h4>项目立项审批状态</h4>
+            <h4>项目立项待审批</h4>
             <el-table :data="tableData1" size="medium" border @row-dblclick="rowDblclick1">
                 <el-table-column prop="xmmc" label="项目名称" show-overflow-tooltip align="center"></el-table-column>
                 <el-table-column prop="lxdwmc" label="立项单位" show-overflow-tooltip align="center"></el-table-column>

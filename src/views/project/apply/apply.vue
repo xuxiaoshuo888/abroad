@@ -9,8 +9,9 @@
                 <el-form-item label="项目名称" class="block" prop="xmmc">
                     <el-input v-model="applyProject.xmmc" class="name"></el-input>
                 </el-form-item>
-                <el-form-item label="出国/出境" prop="typeid">
-                    <el-select v-model="applyProject.typeid" placeholder="请选择">
+                <el-form-item label="出国(境)" prop="typeid">
+                    <el-select v-model="applyProject.typename" placeholder="请选择">
+                        <!--<el-select v-model="applyProject.typeid" placeholder="请选择">-->
                         <el-option
                                 v-for="item in placeList"
                                 :key="item.id"
@@ -20,7 +21,8 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="立项单位" prop="lxdwid">
-                    <el-select v-model="applyProject.lxdwid" filterable placeholder="请选择">
+                    <!--<el-select v-model="applyProject.lxdwid" filterable placeholder="请选择">-->
+                        <el-select v-model="applyProject.lxdwmc" filterable placeholder="请选择">
                         <el-option
                                 v-for="item in deptList"
                                 :key="item.id"
@@ -65,7 +67,7 @@
                     <el-input v-model="studentInfo.zzmm" disabled></el-input>
                 </el-form-item>
                 <el-form-item label="证件类型">
-                    <el-select v-model="apply.zjlx" placeholder="请选择">
+                    <el-select v-model="apply.zjlx" placeholder="请选择" style="width: 185.6px;">
                         <el-option label="护照" value="护照"></el-option>
                         <el-option label="身份证" value="身份证"></el-option>
                         <el-option label="台胞证" value="台胞证"></el-option>
@@ -172,6 +174,7 @@
         return this.$store.state.role
       },
       applyProject(){
+        console.log(this.$store.state.applyProject)
         return this.$store.state.applyProject
       }
     },

@@ -368,6 +368,7 @@
       //表格行双击
       rowDblclick(row){
         this.apply={...row};
+        console.log(apply)
         this.$ajax.post('/student/getInfoById',{studentId:row.student_id})
           .then(res=>{
             this.studentInfo={...res.data.data.data};
@@ -383,6 +384,7 @@
       //操作按钮
       //审批
       handleApprove(row){
+        console.log(row)
         this.apply={...row};
         this.$ajax.post('/student/getInfoById',{studentId:row.student_id})
           .then(res=>{

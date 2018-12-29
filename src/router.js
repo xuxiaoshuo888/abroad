@@ -189,6 +189,12 @@ export default new Router({
       name: "学院、立项单位",
       component: () => import("./views/work/xy.vue"),
       meta: {requireAuth: true}
+    },
+    {
+      path: "/help",
+      name: "帮助下载链接",
+      component: () => import("./views/help.vue"),
+      meta: {requireAuth: false}
     }
   ]
 })

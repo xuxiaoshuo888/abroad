@@ -67,7 +67,7 @@
                 <router-link class="work_more" to="/award/list/student">更多>>></router-link>
             </div>
 
-            <h4>回国登记提醒（X条需及时登记）</h4>
+            <h4>回国登记提醒（{{X}}条需及时登记）</h4>
             <el-table :data="tableData3" size="medium" border @row-dblclick="rowDblclick3">
                 <el-table-column prop="xmmc" label="项目名称" show-overflow-tooltip align="center"></el-table-column>
                 <el-table-column prop="lxdwmc" label="立项单位" show-overflow-tooltip align="center"></el-table-column>
@@ -178,8 +178,8 @@
           ydcl: '',
           status: '',
         },
-        fileList:[],//upload本身上传文件
-        archiveFileList:[],//附件所需结构
+        fileList: [],//upload本身上传文件
+        archiveFileList: [],//附件所需结构
       }
     },
     created() {
@@ -190,6 +190,9 @@
     computed: {
       role() {
         return this.$store.state.role
+      },
+      X() {
+        return this.countX()
       }
     },
     methods: {
@@ -274,6 +277,7 @@
       getTableData3() {
         this.$ajax.post('/projectReturn/expirePage')
             .then(res => {
+              console.log(res)
               if (res.data.errcode === '0') {
                 this.total = res.data.data.data.records;
                 this.tableData3 = res.data.data.data.rows.splice(0, 1);
@@ -385,6 +389,21 @@
                   })
             })
       },
+      countX() {
+        let count = 0
+        let now = (new Date()).getTime()
+        let period = 3 * 24 * 60 * 60 * 1000
+        if (this.tableData3.length > 0) {
+          for (let i = 0; i < this.tableData3.length; i++) {
+            if (this.tableData3[i].xmzzsj) {
+              if (now - (new Date(this.tableData3[i].xmzzsj)).getTime() >= period) {
+                count++
+              }
+            }
+          }
+        }
+        return count
+      }
     },
   }
 </script>

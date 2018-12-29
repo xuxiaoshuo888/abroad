@@ -184,6 +184,17 @@
                         <i v-else class="el-icon-plus icon"></i>
                     </el-upload>
                 </el-form-item>
+                <el-form-item label="审核状况" class="block step">
+                    <el-steps :active="xl" finish-status="success" :space="800">
+                        <el-step v-for="i in processDataList" :key="i.id" :description="i.spyj">
+                            <template slot="title">
+                                <span v-if="i.status==='0'">{{i.step_name}}待审核</span>
+                                <span v-else-if="i.status==='1'">{{i.step_name}}审核通过</span>
+                                <span v-else-if="i.status==='9'">{{i.step_name}}审核不通过</span>
+                            </template>
+                        </el-step>
+                    </el-steps>
+                </el-form-item>
                 <!--<el-form-item label="交流报告总结" class="block">-->
                     <!--<el-upload disabled :action="$proxy+'/upload/uploadFile'"-->
                                <!--:limit="1" :on-success="handleSuccess0" :file-list="zjList">-->
@@ -256,6 +267,8 @@
 
         //后来添加的申请表的信息
         glxm: '',//关联项目
+        processDataList:'',//步骤
+        xl:0
       };
     },
     computed: {
@@ -298,6 +311,8 @@
               // this.countryList=res.data.data.data;
               console.log(res.data.data.data)
               this.apply = res.data.data.data.apply
+              this.xl = res.data.data.data.xl
+              this.processDataList = res.data.data.data.processDataList
               this.glxm = res.data.data.data
             });
       },
@@ -421,6 +436,12 @@
             .el-tag {
                 margin-right: 10px;
             }
+        }
+    }
+    .step{//审核状况即步骤条显示问题
+        .el-form-item__content{
+            line-height: normal;
+            width: 800px;
         }
     }
 </style>

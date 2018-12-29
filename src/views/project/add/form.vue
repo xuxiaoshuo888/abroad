@@ -207,7 +207,7 @@
                     </el-table-column>
                 </el-table>
             </el-form-item>
-            <el-form-item label="审批记录" class="block" v-if="form.status!=='1'">
+            <el-form-item label="审批记录" class="block" v-if="(form.status=='2' || form.status=='8') && row.sfzx == '101'">
                 <el-tag type="success" size="mini">{{form.shrxm}}</el-tag>
                 在
                 <el-tag type="success" size="mini">{{form.shsj}}</el-tag>
@@ -276,7 +276,7 @@
     },
     data() {
       return {
-        destory:true,//通过v-if   destory销毁组件
+        destory: true,//通过v-if   destory销毁组件
         placeList: [],//出国出境列表
         deptList: [],//单位部门列表
         fundsList: [],//经费来源
@@ -391,7 +391,7 @@
       this.daterange = [new Date(this.row.xmkssj), new Date(this.row.xmzzsj)]
 
     },
-    mounted(){
+    mounted() {
       //如果xxjlnew存在值，就更新给xxjl，如果不存在就直接展示xxjl
       this.updateXxjl()
     },
@@ -573,8 +573,8 @@
           }
         }
       },
-      updateXxjl(){
-        if(this.form.xxjlnew){
+      updateXxjl() {
+        if (this.form.xxjlnew) {
           this.form.xxjl = this.form.xxjlnew
         }
       }

@@ -17,7 +17,7 @@
           <el-menu-item index="/project/list/my" v-if="role==='SYS_DEPT'||role==='SYS_LXDW'"><router-link to="/project/list/my">已发布项目</router-link></el-menu-item>
 
           <el-menu-item index="/project/apply/list" v-if="role==='SYS_STUDENT'"><router-link to="/project/apply/list">我的申请记录</router-link></el-menu-item>
-          <el-menu-item index="/project/reg/list" v-if="role==='SYS_STUDENT'"><router-link to="/project/reg/list">我的登记</router-link></el-menu-item>
+          <el-menu-item index="/project/reg/list" v-if="role==='SYS_STUDENT'"><router-link to="/project/reg/list">回国登记</router-link></el-menu-item>
 
           <el-menu-item index="/project/apply/examine" v-if="role!=='SYS_STUDENT'"><router-link to="/project/apply/examine">学生申请审批</router-link></el-menu-item>
         </el-submenu>
@@ -39,7 +39,8 @@
         <el-submenu index="7">
           <template slot="title">{{user.truename}}</template>
           <el-menu-item index="7-1" @click="switchRole">切换角色</el-menu-item>
-          <el-menu-item index="7-1" @click="logout">注销</el-menu-item>
+          <el-menu-item index="7-2" @click="logout">注销</el-menu-item>
+            <el-menu-item index="7-3" @click="toHelp">帮助</el-menu-item>
         </el-submenu>
       </el-menu>
     </div>
@@ -118,6 +119,9 @@
         this.$store.commit('setRole',this.newRole);
         this.dialogVisible=false;
         this.$router.push('/');
+      },
+      toHelp(){
+        this.$router.push({path:'help'})
       }
     }
   };
