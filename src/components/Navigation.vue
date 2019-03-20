@@ -14,7 +14,7 @@
           <el-menu-item index="/project/list/unspecial" v-if="role==='SYS_LGB'||role==='SYS_GATB'"><router-link to="/project/list/unspecial">非专项项目管理</router-link></el-menu-item>
 
           <el-menu-item index="/project/list/student" v-if="role==='SYS_STUDENT'"><router-link to="/project/list/student">已发布项目</router-link></el-menu-item>
-          <el-menu-item index="/project/list/my" v-if="role==='SYS_DEPT'||role==='SYS_LXDW'"><router-link to="/project/list/my">已发布项目</router-link></el-menu-item>
+          <el-menu-item index="/project/list/my" v-if="role==='SYS_DEPT'||role==='SYS_LXDW'"><router-link to="/project/list/my">我申请的项目</router-link></el-menu-item>
 
           <el-menu-item index="/project/apply/list" v-if="role==='SYS_STUDENT'"><router-link to="/project/apply/list">我的申请记录</router-link></el-menu-item>
           <el-menu-item index="/project/reg/list" v-if="role==='SYS_STUDENT'"><router-link to="/project/reg/list">回国登记</router-link></el-menu-item>
@@ -44,7 +44,7 @@
         </el-submenu>
       </el-menu>
     </div>
-    <el-dialog class="switch" :visible.sync="dialogVisible" width="30%">
+    <el-dialog class="switch" :visible.sync ="dialogVisible" width="30%">
       <header slot="title">切换角色</header>
       <el-select v-model="newRole" placeholder="请选择">
         <el-option

@@ -1,4 +1,4 @@
-const target='http://192.168.0.184:8080';
+const target='http://192.168.0.184:8050';
 module.exports = {
   // 基本路径
   baseUrl: './',

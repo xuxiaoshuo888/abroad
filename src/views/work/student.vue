@@ -392,11 +392,11 @@
       countX() {
         let count = 0
         let now = (new Date()).getTime()
-        let period = 3 * 24 * 60 * 60 * 1000
+        let period = 3 * 24 * 60 * 60 * 1000//3天的总毫秒数
         if (this.tableData3.length > 0) {
           for (let i = 0; i < this.tableData3.length; i++) {
             if (this.tableData3[i].xmzzsj) {
-              if (now - (new Date(this.tableData3[i].xmzzsj)).getTime() >= period) {
+              if (now - (new Date(this.tableData3[i].xmzzsj)).getTime() <= period) {
                 count++
               }
             }
