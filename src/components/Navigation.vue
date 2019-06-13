@@ -1,10 +1,14 @@
 <template>
   <div id="nav">
     <div class="content">
-      <router-link to="/" class="title"><img class="logo" src="favicon.png"/>学生出国（境）学习管理系统</router-link>
+      <router-link to="/" class="title"><img class="logo" src="logo.png"/></router-link>
+<!--      学生出国（境）学习管理系统-->
       <el-menu class="menu"
               :default-active="$route.path"
-              mode="horizontal">
+              mode="horizontal"
+               background-color="#1390d3"
+               text-color="#fff"
+               active-text-color="#ffd04b">
           <el-menu-item index="4" @click="toWork(newRole)">我的工作台</el-menu-item>
         <el-submenu index="project">
           <template slot="title">项目管理</template>
@@ -130,20 +134,36 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
   #nav{
-    background: #ffffff;
+    background: #1390d3;
     .content{
       @include flex(space-between);
       @extend %width;
       .title{
         @include flex;
         img.logo{
-          width: 30px;
-          margin-right: 10px;
+          width: 225px;
+          margin-right: 50px;
         }
       }
       .menu{
+        height: 90px;
+        color: white;
         .el-menu-item{
+          height: 90px;
+          line-height: 90px;
           /*padding: 0 50px;*/
+        }
+        .el-submenu{
+          height: 90px;
+          line-height: 90px;
+          /*padding: 0 50px;*/
+          .el-submenu__title{
+            height: 90px;
+            line-height: 90px;
+            i{
+              color: white;
+            }
+          }
         }
       }
     }
